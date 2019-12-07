@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".writtingNote">
 
     <View
         android:id="@+id/ffff"
@@ -44,34 +44,22 @@
         android:layout_height="35dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
+        android:id="@+id/searsh"
         android:layout_marginEnd="10dp"
         android:background="@drawable/background_garay"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ddss" />
 
-    <ImageView
-        android:id="@+id/image_view"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/recangel"
+        android:layout_margin="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVer0tical_bias="0.361" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="15dp"
-        android:text="Let’s create a Note together"
-        android:textColor="#7B1E58"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_view" />
-
+        app:layout_constraintTop_toBottomOf="@+id/searsh"
+        tools:listitem="@layout/item_writing_note" />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="30dp"
         android:layout_height="30dp"
