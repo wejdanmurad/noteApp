@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">NoteApp</string>
     <string name="myDiary">my diary</string>
+    <string name="Next">Next</string>
+    <string name="Skip">Skip</string>
+    <string name="splash_title">Title</string>
+    <string name="splash_txt">description</string>
+    <string name="slid1Txt">Notebooks are the best place to manage your Notes</string>
+    <string name="slide2Txt">Simply create your note and add it to your favorite notebook</string>
+    <string name="title">Notebooks</string>
+    <string name="txt">Notebooks are the best place to manage your Notes</string>
 </resources>
