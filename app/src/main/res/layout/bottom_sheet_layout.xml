@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="260dp"
+    android:paddingStart="50dp"
+    android:paddingTop="35dp"
+    android:paddingEnd="50dp"
+    android:paddingBottom="35dp">
+
+    <ImageView
+        android:id="@+id/oval1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_rowWeight="1"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:onClick="onClick"
+        android:padding="10dp"
+        android:src="@drawable/oval1" />
+
+    <ImageView
+        android:id="@+id/oval2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_rowWeight="1"
+        android:layout_column="1"
+        android:layout_columnWeight="1"
+        android:onClick="onClick"
+        android:padding="10dp"
+        android:src="@drawable/oval2" />
+
+    <ImageView
+        android:id="@+id/oval3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_rowWeight="1"
+        android:layout_column="2"
+        android:layout_columnWeight="1"
+        android:onClick="onClick"
+        android:padding="10dp"
+        android:src="@drawable/oval3" />
+
+    <ImageView
+        android:id="@+id/oval4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_rowWeight="1"
+        android:layout_column="3"
+        android:layout_columnWeight="1"
+        android:onClick="onClick"
+        android:padding="10dp"
+        android:src="@drawable/oval4" />
+
+    <ImageView
+        android:id="@+id/oval5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_rowWeight="1"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:onClick="onClick"
+        android:padding="10dp"
+
+        android:src="@drawable/oval5" />
+
+    <ImageView
+        android:id="@+id/oval6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_rowWeight="1"
+        android:layout_column="1"
+        android:layout_columnWeight="1"
+        android:onClick="onClick"
+        android:padding="10dp"
+        android:src="@drawable/oval6" />
+
+    <ImageView
+        android:id="@+id/oval7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_rowWeight="1"
+        android:layout_column="2"
+        android:layout_columnWeight="1"
+        android:onClick="onClick"
+        android:padding="10dp"
+        android:src="@drawable/oval7" />
+
+    <ImageView
+        android:id="@+id/oval8"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_rowWeight="1"
+        android:layout_column="3"
+        android:layout_columnWeight="1"
+        android:onClick="onClick"
+        android:padding="10dp"
+        android:src="@drawable/oval8" />
+
+    <ImageView
+        android:id="@+id/oval9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_rowWeight="1"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:onClick="onClick"
+        android:padding="10dp"
+        android:src="@drawable/oval9" />
+
+    <ImageView
+        android:id="@+id/oval10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_rowWeight="1"
+        android:layout_column="1"
+        android:layout_columnWeight="1"
+        android:onClick="onClick"
+        android:padding="10dp"
+        android:src="@drawable/oval10" />
+
+    <ImageView
+        android:id="@+id/oval11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_rowWeight="1"
+        android:layout_column="2"
+        android:layout_columnWeight="1"
+        android:padding="10dp"
+        android:onClick="onClick"
+        android:src="@drawable/oval11" />
+
+    <ImageView
+        android:onClick="onClick"
+        android:id="@+id/oval12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_rowWeight="1"
+        android:layout_column="3"
+        android:layout_columnWeight="1"
+        android:padding="10dp"
+        android:src="@drawable/oval12" />
+
+
+</GridLayout>
