@@ -1,9 +1,11 @@
-package com.example.noteapp;
+package com.example.noteapp.signInUp;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.noteapp.R;
 
 public class CheackEmail extends AppCompatActivity {
     @Override

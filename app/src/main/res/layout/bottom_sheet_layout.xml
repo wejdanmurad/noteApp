@@ -18,7 +18,7 @@
         android:layout_columnWeight="1"
         android:onClick="onClick"
         android:padding="10dp"
-        android:src="@drawable/oval1" />
+        android:src="@drawable/oval3" />
 
     <ImageView
         android:id="@+id/oval2"
@@ -42,7 +42,7 @@
         android:layout_columnWeight="1"
         android:onClick="onClick"
         android:padding="10dp"
-        android:src="@drawable/oval3" />
+        android:src="@drawable/oval1" />
 
     <ImageView
         android:id="@+id/oval4"
@@ -95,7 +95,6 @@
 
     <ImageView
         android:id="@+id/oval8"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="1"

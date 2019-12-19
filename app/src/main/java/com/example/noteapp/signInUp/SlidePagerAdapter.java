@@ -1,4 +1,4 @@
-package com.example.noteapp;
+package com.example.noteapp.signInUp;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.noteapp.R;
+import com.example.noteapp.signInUp.Slide;
 
 import java.util.List;
 

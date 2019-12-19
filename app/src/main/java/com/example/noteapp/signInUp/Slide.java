@@ -1,4 +1,4 @@
-package com.example.noteapp;
+package com.example.noteapp.signInUp;
 
 public class Slide {
     private int Image;

@@ -18,6 +18,4 @@
     <style name="BtnStyle" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:background">@drawable/btn</item>
     </style>
-
-
 </resources>

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".SignUp">
+    tools:context=".signInUp.SignUp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,22 +18,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
+            android:onClick="signIn"
             android:text="Sign in"
             android:textColor="#000"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="signIn"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
+            android:onClick="finish"
             android:src="@drawable/ic_close_black_24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="finish"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/ddd"
@@ -58,6 +56,7 @@
             android:layout_marginEnd="30dp"
             android:background="@null"
             android:hint="Enter your email address"
+            android:inputType="textEmailAddress"
             android:paddingStart="10dp"
             android:paddingTop="25dp"
             android:paddingBottom="10dp"
@@ -84,7 +83,8 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:background="@null"
-            android:hint="Enter your email address"
+            android:hint="Enter your password"
+            android:inputType="textPassword"
             android:paddingStart="10dp"
             android:paddingTop="25dp"
             android:paddingBottom="10dp"
@@ -116,6 +116,7 @@
             app:layout_constraintTop_toBottomOf="@+id/view2" />
 
         <Button
+            android:id="@+id/signUpBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"

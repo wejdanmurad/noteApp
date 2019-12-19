@@ -1,10 +1,14 @@
-package com.example.noteapp;
+package com.example.noteapp.signInUp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.noteapp.R;
+import com.example.noteapp.signInUp.SignIn;
+import com.example.noteapp.signInUp.SignUp;
 
 public class Splash extends AppCompatActivity {
 
@@ -13,6 +17,7 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spla);
         getSupportActionBar().hide();
+
     }
 
 

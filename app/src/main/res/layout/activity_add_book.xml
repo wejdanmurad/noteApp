@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+    <ImageView
+        android:id="@+id/picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@drawable/background_circel_pick"
+        android:onClick="show"
+        android:padding="12dp"
+        android:src="@drawable/pick"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:tint="@color/colorAccent"
+        />
+
     <TextView
         android:id="@+id/cancel"
         android:layout_width="wrap_content"
@@ -15,17 +30,20 @@
         android:textColor="#000"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="cancel"
+        />
 
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:src="@drawable/book_book"
+        android:src="@drawable/book1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cancel" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="150dp"
+        />
 
     <EditText
         android:id="@+id/title"
@@ -36,7 +54,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_view"
-        tools:text="@string/myDiary" />
+        android:textColor="@color/colorAccent"
+        android:text="@string/myDiary"
+        android:textSize="20sp"
+        />
 
 
     <Button
@@ -49,7 +70,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
+        android:onClick="save"
         />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

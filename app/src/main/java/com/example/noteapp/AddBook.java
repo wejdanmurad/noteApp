@@ -1,25 +1,17 @@
 package com.example.noteapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-import java.sql.Time;
-import java.util.Calendar;
-import java.util.Date;
-
-public class AddNote extends AppCompatActivity implements View.OnClickListener {
+public class AddBook extends AppCompatActivity  implements View.OnClickListener {
     BottomSheetDialog bottomSheetDialog;
     ImageView b1;
     ImageView b2;
@@ -33,37 +25,21 @@ public class AddNote extends AppCompatActivity implements View.OnClickListener {
     ImageView b10;
     ImageView b11;
     ImageView b12;
-    ConstraintLayout layout;
-    int color;
-    EditText title, txt;
-    TextView date;
+    ImageView img;
+    int imgR;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_book);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_add_note);
+        findViewById(R.id.title).requestFocus();
         createBoteSheeteDialog();
 
-        layout=findViewById(R.id.noteLayout);
+        img=findViewById(R.id.image_view);
+        imgR=R.drawable.book1;
 
 
-        date=findViewById(R.id.date);
-        title=findViewById(R.id.ETTitle);
-        txt=findViewById(R.id.ETTxt);
-
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int hour12hrs = calendar.get(Calendar.HOUR);
-        int minutes = calendar.get(Calendar.MINUTE);
-
-        String d=day+"/"+month+"/"+year+"     "+hour12hrs+":"+minutes;
-        date.setText(d);
-
-        color=getResources().getColor(R.color.color5);
     }
-
     private void createBoteSheeteDialog() {
         if (bottomSheetDialog == null) {
             View view = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_layout, null);
@@ -97,71 +73,67 @@ public class AddNote extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    public void showDialog(View view) {
-        bottomSheetDialog.show();
-    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.oval1:
-                color=getResources().getColor(R.color.color1);
-                layout.setBackgroundColor(color);
+                img.setImageResource(R.drawable.book1);
+                imgR=R.drawable.book1;
                 bottomSheetDialog.dismiss();
                 break;
             case R.id.oval2:
-                color=getResources().getColor(R.color.color2);
-                layout.setBackgroundColor(color);
+                img.setImageResource(R.drawable.book6);
+                imgR=R.drawable.book6;
                 bottomSheetDialog.dismiss();
                 break;
             case R.id.oval3:
-                color=getResources().getColor(R.color.color3);
-                layout.setBackgroundColor(color);
+                img.setImageResource(R.drawable.book3);
+                imgR=R.drawable.book3;
                 bottomSheetDialog.dismiss();
                 break;
             case R.id.oval4:
-                color=getResources().getColor(R.color.color4);
-                layout.setBackgroundColor(color);
+                img.setImageResource(R.drawable.book5);
+                imgR=R.drawable.book5;
                 bottomSheetDialog.dismiss();
                 break;
             case R.id.oval5:
-                color=getResources().getColor(R.color.color5);
-                layout.setBackgroundColor(color);
+                img.setImageResource(R.drawable.book29);
+                imgR=R.drawable.book29;
                 bottomSheetDialog.dismiss();
                 break;
             case R.id.oval6:
-                color=getResources().getColor(R.color.color6);
-                layout.setBackgroundColor(color);
+                img.setImageResource(R.drawable.book7);
+                imgR=R.drawable.book7;
                 bottomSheetDialog.dismiss();
                 break;
             case R.id.oval7:
-                color=getResources().getColor(R.color.color7);
-                layout.setBackgroundColor(color);
+                img.setImageResource(R.drawable.book22);
+                imgR=R.drawable.book22;
                 bottomSheetDialog.dismiss();
                 break;
             case R.id.oval8:
-                color=getResources().getColor(R.color.color8);
-                layout.setBackgroundColor(color);
+                img.setImageResource(R.drawable.book11);
+                imgR=R.drawable.book11;
                 bottomSheetDialog.dismiss();
                 break;
             case R.id.oval9:
-                color=getResources().getColor(R.color.color9);
-                layout.setBackgroundColor(color);
+                img.setImageResource(R.drawable.book30);
+                int imgR=R.drawable.book30;
                 bottomSheetDialog.dismiss();
                 break;
             case R.id.oval10:
-                color=getResources().getColor(R.color.color10);
-                layout.setBackgroundColor(color);
+                img.setImageResource(R.drawable.book8);
+                imgR=R.drawable.book8;
                 bottomSheetDialog.dismiss();
                 break;
             case R.id.oval11:
-                color=getResources().getColor(R.color.color11);
-                layout.setBackgroundColor(color);
+                img.setImageResource(R.drawable.book23);
+                imgR=R.drawable.book23;
                 bottomSheetDialog.dismiss();
                 break;
             case R.id.oval12:
-                color=getResources().getColor(R.color.color12);
-                layout.setBackgroundColor(color);
+                img.setImageResource(R.drawable.book25);
+                imgR=R.drawable.book25;
                 bottomSheetDialog.dismiss();
                 break;
 
@@ -169,15 +141,23 @@ public class AddNote extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    public void saveNote(View view) {
+    public void show(View view) {
+        bottomSheetDialog.show();
+    }
+
+    public void cancel(View view) {
+        setResult(RESULT_CANCELED);
+        this.finishAndRemoveTask();
+    }
+
+    public void save(View view) {
         Intent intent = new Intent();
-
-        intent.putExtra("mark", color);
-        intent.putExtra("date", date.getText().toString());
-        intent.putExtra("title", title.getText().toString());
-        intent.putExtra("txt", txt.getText().toString());
-
+        EditText title=findViewById(R.id.title);
+        String titleTxt=title.getText().toString();
+        intent.putExtra("title",titleTxt);
+        intent.putExtra("img",imgR);
         setResult(RESULT_OK, intent);
         this.finishAndRemoveTask();
+
     }
 }

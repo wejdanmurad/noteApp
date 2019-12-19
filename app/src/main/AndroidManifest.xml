@@ -11,18 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Splash"></activity>
-        <activity android:name=".SignUp"></activity>
-        <activity android:name=".SignIn"></activity>
-        <activity android:name=".Tutorial" >
+        <activity android:name=".ViewBooks"></activity>
+        <activity android:name=".AddBook" />
+        <activity android:name=".ViewNotes" />
+        <activity android:name=".signInUp.Splash" />
+        <activity android:name=".signInUp.SignUp" />
+        <activity android:name=".signInUp.SignIn" />
+        <activity android:name=".signInUp.Tutorial">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".AddNote">
-        </activity>
+        <activity android:name=".AddNote" />
         <activity android:name=".MainActivity" />
     </application>
 
