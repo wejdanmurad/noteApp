@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewBooks"></activity>
+        <activity android:name=".ViewMyNote"></activity>
+        <activity android:name=".ShowAllNotes" />
+        <activity android:name=".ViewBooks" />
         <activity android:name=".AddBook" />
         <activity android:name=".ViewNotes" />
         <activity android:name=".signInUp.Splash" />

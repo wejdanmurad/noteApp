@@ -3,21 +3,19 @@ package com.example.noteapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
-import java.sql.Time;
 import java.util.Calendar;
-import java.util.Date;
 
 public class AddNote extends AppCompatActivity implements View.OnClickListener {
     BottomSheetDialog bottomSheetDialog;
@@ -37,6 +35,7 @@ public class AddNote extends AppCompatActivity implements View.OnClickListener {
     int color;
     EditText title, txt;
     TextView date;
+    String bookId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +47,8 @@ public class AddNote extends AppCompatActivity implements View.OnClickListener {
 
 
         date=findViewById(R.id.date);
-        title=findViewById(R.id.ETTitle);
-        txt=findViewById(R.id.ETTxt);
+        title=findViewById(R.id.Title);
+        txt=findViewById(R.id.Txt);
 
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -62,6 +61,10 @@ public class AddNote extends AppCompatActivity implements View.OnClickListener {
         date.setText(d);
 
         color=getResources().getColor(R.color.color5);
+
+
+        bookId=getIntent().getStringExtra("id");
+
     }
 
     private void createBoteSheeteDialog() {
@@ -170,14 +173,14 @@ public class AddNote extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void saveNote(View view) {
-        Intent intent = new Intent();
 
-        intent.putExtra("mark", color);
-        intent.putExtra("date", date.getText().toString());
-        intent.putExtra("title", title.getText().toString());
-        intent.putExtra("txt", txt.getText().toString());
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        String id = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("Book").child(bookId).child("Note").push().getKey();
+        Note note=new Note(id,color,date.getText().toString(),title.getText().toString(),txt.getText().toString());
+        FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("Book").child(bookId).child("Note").child(String.valueOf(id)).setValue(note);
 
-        setResult(RESULT_OK, intent);
+
         this.finishAndRemoveTask();
     }
 }

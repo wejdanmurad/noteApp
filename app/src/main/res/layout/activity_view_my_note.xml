@@ -1,47 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".ViewMyNote"
     android:background="@color/colorAccent"
-    tools:context=".AddNote"
-    android:id="@+id/noteLayout"
-    >
-
-    <ImageView
-        android:id="@+id/picker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/background_white_circel_pick"
-        android:onClick="showDialog"
-        android:padding="12dp"
-        android:src="@drawable/pick"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:id="@+id/viewMyNoteLayout">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="32dp"
         android:background="#fff"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/picker" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="32dp"
         android:text="March 20 , 2018 15:35"
         android:textColor="#000"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/Title"
@@ -51,7 +39,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="25dp"
         android:background="@null"
-        android:hint="Add main Title"
         android:textColor="#fff"
         android:textColorHint="#fff"
         android:textSize="22sp"
@@ -67,7 +54,6 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="25dp"
         android:background="@null"
-        android:hint="Add Text"
         android:minLines="2"
         android:textColor="#fff"
         android:textColorHint="#fff"
@@ -80,20 +66,5 @@
         app:layout_constraintVertical_bias="0.005" />
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:layout_margin="16dp"
-        android:theme="@style/AppTheme1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_done_black_24dp"
-        android:onClick="saveNote"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-

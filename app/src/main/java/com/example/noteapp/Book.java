@@ -4,22 +4,25 @@ import java.util.List;
 
 class Book {
 
-    private int id;
+    private String id;
     private int img;
     private String title;
-    private List<Note> bookNotes;
+    //private List<Note> bookNotes;
 
-    public Book(int id, int img, String title) {
+    public Book(String id, int img, String title) {
         this.id = id;
         this.img = img;
         this.title = title;
     }
 
-    public int getId() {
+    public Book() {
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -39,11 +42,11 @@ class Book {
         this.title = title;
     }
 
-    public List<Note> getBookNotes() {
-        return bookNotes;
-    }
-
-    public void setBookNotes(List<Note> bookNotes) {
-        this.bookNotes = bookNotes;
-    }
+//    public List<Note> getBookNotes() {
+//        return bookNotes;
+//    }
+//
+//    public void setBookNotes(List<Note> bookNotes) {
+//        this.bookNotes = bookNotes;
+//    }
 }

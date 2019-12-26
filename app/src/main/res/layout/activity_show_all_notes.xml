@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewBooks">
-
-
+    tools:context=".ShowAllNotes">
 
     <TextView
         android:id="@+id/Notebooks"
@@ -14,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="40dp"
-        android:text="Notebooks"
+        android:text="All Notes"
         android:textColor="#000"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Notebooks" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/booksRe"
+        android:id="@+id/notesRe"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="15dp"
@@ -44,6 +42,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searsh"
         app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/book" />
-
+        tools:listitem="@layout/note" />
 </androidx.constraintlayout.widget.ConstraintLayout>

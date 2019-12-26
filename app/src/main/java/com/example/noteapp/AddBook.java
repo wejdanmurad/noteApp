@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class AddBook extends AppCompatActivity  implements View.OnClickListener {
     BottomSheetDialog bottomSheetDialog;
@@ -27,6 +30,7 @@ public class AddBook extends AppCompatActivity  implements View.OnClickListener 
     ImageView b12;
     ImageView img;
     int imgR;
+    int bookId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +41,6 @@ public class AddBook extends AppCompatActivity  implements View.OnClickListener 
 
         img=findViewById(R.id.image_view);
         imgR=R.drawable.book1;
-
 
     }
     private void createBoteSheeteDialog() {
@@ -151,12 +154,15 @@ public class AddBook extends AppCompatActivity  implements View.OnClickListener 
     }
 
     public void save(View view) {
-        Intent intent = new Intent();
         EditText title=findViewById(R.id.title);
         String titleTxt=title.getText().toString();
-        intent.putExtra("title",titleTxt);
-        intent.putExtra("img",imgR);
-        setResult(RESULT_OK, intent);
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        String id = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("Book").push().getKey();
+        Book book=new Book(id,imgR,titleTxt);
+        FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("Book").child(String.valueOf(id)).setValue(book);
+
         this.finishAndRemoveTask();
 
     }

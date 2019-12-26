@@ -2,13 +2,11 @@ package com.example.noteapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,22 +19,23 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewBooks extends AppCompatActivity implements BookItemClickListener {
+public class ShowAllNotes extends AppCompatActivity implements NoteItemClickListener{
 
-    List<Book> books;
-    BookAdapter bookAdapter;
-    RecyclerView bookRV;
+    List<Note> notes;
+    NoteAdapter noteAdapter;
+    RecyclerView noteRV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_books);
+        setContentView(R.layout.activity_show_all_notes);
         getSupportActionBar().hide();
 
-        books=new ArrayList<>();
-        bookRV=findViewById(R.id.booksRe);
+        notes=new ArrayList<>();
+        noteRV=findViewById(R.id.notesRe);
 
     }
+
 
 
     @Override
@@ -51,17 +50,26 @@ public class ViewBooks extends AppCompatActivity implements BookItemClickListene
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                books.clear();
+                notes.clear();
+
                 for (DataSnapshot bookSnapshot:dataSnapshot.getChildren()){
                     String id=bookSnapshot.child("id").getValue().toString();
-                    int img=bookSnapshot.child("img").getValue(Integer.class);
-                    String title=bookSnapshot.child("title").getValue(String.class);
-                    Book book=new Book(id,img,title);
-                    books.add(book);
+
+                    for (DataSnapshot noteSnapshot:bookSnapshot.child("Note").getChildren()){
+                        String noteId=noteSnapshot.child("id").getValue().toString();
+                        int mark=noteSnapshot.child("mark").getValue(Integer.class);
+                        String date=noteSnapshot.child("date").getValue(String.class);
+                        String title=noteSnapshot.child("title").getValue(String.class);
+                        String txt=noteSnapshot.child("txt").getValue(String.class);
+
+                        Note note=new Note(noteId,mark,date,title,txt);
+                        notes.add(note);
+                    }
                 }
-                bookAdapter = new BookAdapter(ViewBooks.this, books, ViewBooks.this);
-                bookRV.setAdapter(bookAdapter);
-                bookRV.setLayoutManager(new GridLayoutManager(ViewBooks.this, 3));
+
+                noteAdapter = new NoteAdapter(ShowAllNotes.this, notes, ShowAllNotes.this);
+                noteRV.setAdapter(noteAdapter);
+                noteRV.setLayoutManager(new LinearLayoutManager(ShowAllNotes.this, LinearLayoutManager.VERTICAL, false));
 
             }
 
@@ -73,9 +81,9 @@ public class ViewBooks extends AppCompatActivity implements BookItemClickListene
     }
 
     @Override
-    public void onBookClick(Book book) {
-        Intent intent = new Intent(this, ViewNotes.class);
-        intent.putExtra("id", book.getId());
+    public void onNoteClick(Note note) {
+        Intent intent=new Intent(this,ViewMyNote.class);
+        intent.putExtra("id",note.id);
         startActivity(intent);
     }
 }
