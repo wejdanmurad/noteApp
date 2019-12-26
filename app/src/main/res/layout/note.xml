@@ -52,6 +52,7 @@
             android:layout_height="35dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="32dp"
             android:lines="2"
             android:maxLines="2"
             android:text="Top Things To See During A Holiday In Hong Kong and Many other places."
