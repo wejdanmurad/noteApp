@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,8 +26,10 @@ import java.util.List;
 public class ViewBooks extends AppCompatActivity implements BookItemClickListener {
 
     List<Book> books;
+    List<Book> bkSearch;
     BookAdapter bookAdapter;
     RecyclerView bookRV;
+    SearchView search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +38,22 @@ public class ViewBooks extends AppCompatActivity implements BookItemClickListene
         getSupportActionBar().hide();
 
         books=new ArrayList<>();
+        bkSearch=new ArrayList<>();
         bookRV=findViewById(R.id.booksRe);
+
+        search=findViewById(R.id.searsh);
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                searchBook(s);
+                return false;
+            }
+        });
 
     }
 
@@ -59,10 +78,7 @@ public class ViewBooks extends AppCompatActivity implements BookItemClickListene
                     Book book=new Book(id,img,title);
                     books.add(book);
                 }
-                bookAdapter = new BookAdapter(ViewBooks.this, books, ViewBooks.this);
-                bookRV.setAdapter(bookAdapter);
-                bookRV.setLayoutManager(new GridLayoutManager(ViewBooks.this, 3));
-
+                setMyAdapter(books);
             }
 
             @Override
@@ -77,5 +93,21 @@ public class ViewBooks extends AppCompatActivity implements BookItemClickListene
         Intent intent = new Intent(this, ViewNotes.class);
         intent.putExtra("id", book.getId());
         startActivity(intent);
+    }
+
+    public void setMyAdapter(List<Book> bks){
+        bookAdapter = new BookAdapter(ViewBooks.this, bks, ViewBooks.this);
+        bookRV.setAdapter(bookAdapter);
+        bookRV.setLayoutManager(new GridLayoutManager(ViewBooks.this, 3));
+    }
+
+    public void searchBook(String s){
+        bkSearch.clear();
+        for(Book book:books){
+            if (book.getTitle().contains(s)){
+                bkSearch.add(book);
+            }
+        }
+        setMyAdapter(bkSearch);
     }
 }

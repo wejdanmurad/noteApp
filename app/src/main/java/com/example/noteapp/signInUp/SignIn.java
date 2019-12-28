@@ -38,7 +38,7 @@ public class SignIn extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         emailEt = findViewById(R.id.email_sig_in);
-        passwordEt = findViewById(R.id.password_sig_in);
+        passwordEt = findViewById(R.id.passworEmail);
         signUpBtn = findViewById(R.id.signInBtn);
         signUpBtn.setOnClickListener(v->{
             signUpBtn.setEnabled(false);
@@ -110,5 +110,10 @@ public class SignIn extends AppCompatActivity {
                     }
 
                 });
+    }
+
+    public void ForgetPass(View view) {
+        Intent intent=new Intent(this,ForgetPassword.class);
+        startActivity(intent);
     }
 }

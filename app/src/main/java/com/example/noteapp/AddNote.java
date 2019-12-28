@@ -60,7 +60,7 @@ public class AddNote extends AppCompatActivity implements View.OnClickListener {
         String d=day+"/"+month+"/"+year+"     "+hour12hrs+":"+minutes;
         date.setText(d);
 
-        color=getResources().getColor(R.color.color5);
+        color=getResources().getColor(R.color.color1);
 
 
         bookId=getIntent().getStringExtra("id");

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +31,8 @@ public class ViewNotes extends AppCompatActivity implements NoteItemClickListene
     TextView textView;
     String id;
     RecyclerView noteRV;
+    SearchView search;
+    List<Note> ntSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,23 @@ public class ViewNotes extends AppCompatActivity implements NoteItemClickListene
         notes=new ArrayList<>();
 
         noteRV=findViewById(R.id.RVNote);
+
+
+        ntSearch=new ArrayList<>();
+
+        search=findViewById(R.id.searsh);
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                searchNote(s);
+                return false;
+            }
+        });
 
     }
 
@@ -72,9 +91,7 @@ public class ViewNotes extends AppCompatActivity implements NoteItemClickListene
                     notes.add(note);
 
                 }
-                noteAdapter = new NoteAdapter(ViewNotes.this, notes, ViewNotes.this);
-                noteRV.setAdapter(noteAdapter);
-                noteRV.setLayoutManager(new LinearLayoutManager(ViewNotes.this, LinearLayoutManager.VERTICAL, false));
+                setMyAdapter(notes);
 
                 if (notes.size()==0){
                     imageView.setVisibility(View.VISIBLE);
@@ -107,5 +124,22 @@ public class ViewNotes extends AppCompatActivity implements NoteItemClickListene
 
     public void Done(View view) {
         this.finish();
+    }
+
+
+    public void setMyAdapter(List<Note> nts){
+        noteAdapter = new NoteAdapter(ViewNotes.this, nts, ViewNotes.this);
+        noteRV.setAdapter(noteAdapter);
+        noteRV.setLayoutManager(new LinearLayoutManager(ViewNotes.this, LinearLayoutManager.VERTICAL, false));
+    }
+
+    public void searchNote(String s){
+        ntSearch.clear();
+        for(Note note:notes){
+            if (note.getTitle().contains(s)){
+                ntSearch.add(note);
+            }
+        }
+        setMyAdapter(ntSearch);
     }
 }

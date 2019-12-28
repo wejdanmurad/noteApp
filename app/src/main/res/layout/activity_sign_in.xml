@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
-
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -77,7 +76,7 @@
             app:layout_constraintTop_toBottomOf="@+id/email_sig_in" />
 
         <EditText
-            android:id="@+id/password_sig_in"
+            android:id="@+id/passworEmail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -102,7 +101,7 @@
             android:background="#E3E3E3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password_sig_in" />
+            app:layout_constraintTop_toBottomOf="@+id/passworEmail" />
 
         <TextView
             android:id="@+id/hhhh"
@@ -113,7 +112,9 @@
             android:textColor="#000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view2" />
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            android:onClick="ForgetPass"
+            />
 
         <Button
             android:id="@+id/signInBtn"

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.SearchView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,7 +25,8 @@ public class ShowAllNotes extends AppCompatActivity implements NoteItemClickList
     List<Note> notes;
     NoteAdapter noteAdapter;
     RecyclerView noteRV;
-
+    SearchView search;
+    List<Note> ntSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,22 @@ public class ShowAllNotes extends AppCompatActivity implements NoteItemClickList
 
         notes=new ArrayList<>();
         noteRV=findViewById(R.id.notesRe);
+
+        ntSearch=new ArrayList<>();
+
+        search=findViewById(R.id.searsh);
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                searchNote(s);
+                return false;
+            }
+        });
 
     }
 
@@ -66,11 +84,7 @@ public class ShowAllNotes extends AppCompatActivity implements NoteItemClickList
                         notes.add(note);
                     }
                 }
-
-                noteAdapter = new NoteAdapter(ShowAllNotes.this, notes, ShowAllNotes.this);
-                noteRV.setAdapter(noteAdapter);
-                noteRV.setLayoutManager(new LinearLayoutManager(ShowAllNotes.this, LinearLayoutManager.VERTICAL, false));
-
+                setMyAdapter(notes);
             }
 
             @Override
@@ -85,5 +99,22 @@ public class ShowAllNotes extends AppCompatActivity implements NoteItemClickList
         Intent intent=new Intent(this,ViewMyNote.class);
         intent.putExtra("id",note.id);
         startActivity(intent);
+    }
+
+
+    public void setMyAdapter(List<Note> nts){
+        noteAdapter = new NoteAdapter(ShowAllNotes.this, nts, ShowAllNotes.this);
+        noteRV.setAdapter(noteAdapter);
+        noteRV.setLayoutManager(new LinearLayoutManager(ShowAllNotes.this, LinearLayoutManager.VERTICAL, false));
+    }
+
+    public void searchNote(String s){
+        ntSearch.clear();
+        for(Note note:notes){
+            if (note.getTitle().contains(s)){
+                ntSearch.add(note);
+            }
+        }
+        setMyAdapter(ntSearch);
     }
 }

@@ -31,7 +31,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/Title"
         android:layout_width="match_parent"
         android:layout_height="35dp"
@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date" />
 
-    <EditText
+    <TextView
         android:id="@+id/Txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
